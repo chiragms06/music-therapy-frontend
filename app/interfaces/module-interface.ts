@@ -3,4 +3,5 @@ export type ModuleCategory = {
   name: string;
   description: string;
   image: string;
+  // linked: string;
 };
