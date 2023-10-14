@@ -16,7 +16,6 @@ const config: Config = {
       colors: {
         MellowApricot: "fdbf76",
         CharlestonGreen: "24272b",
-        
       }
     },
   },
