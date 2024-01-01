@@ -3,41 +3,67 @@
 import { useEffect } from "react";
 import { fetchEcho, fetchVersion, fetchWithAuth } from "@/services/api"; // Import your api.ts file
 
-export default function Test() {
-  function TestAll() {
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const echoResponse = await fetchEcho("Shubham");
-          console.log("Echo Response:", echoResponse);
+export default function TestPage() {
+  function testEcho() {
+    const fetchData = async () => {
+      try {
+        const response = await fetchEcho("Shubham");
+        console.log("Echo Response:", response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-          const versionResponse = await fetchVersion();
-          console.log("Version Response:", versionResponse);
+    fetchData();
+  }
 
-          const authResponse = await fetchWithAuth();
-          console.log("Authenticated Response:", authResponse);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
+  function testVersion() {
+    const fetchData = async () => {
+      try {
+        const response = await fetchVersion();
+        console.log("Version Response:", response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-      fetchData();
-    }, []);
+    fetchData();
+  }
 
-    return <div>Success</div>;
+  function testAuth() {
+    const fetchData = async () => {
+      try {
+        const response = await fetchWithAuth();
+        console.log("Authenticated Response:", response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
   }
 
   return (
     <div>
       <h1>This is testing environment</h1>
-      <br />
       <button
-        className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40"
-        onClick={TestAll}
+        className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40 m-2"
+        onClick={testEcho}
       >
-        Test All
+        Echo
       </button>
-      <br />
+      <button
+        className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40 m-2"
+        onClick={testVersion}
+      >
+        Version
+      </button>
+      <button
+        className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40 m-2"
+        onClick={testAuth}
+      >
+        Auth
+      </button>
     </div>
   );
 }
