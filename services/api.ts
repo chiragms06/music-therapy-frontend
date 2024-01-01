@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://20.235.245.115:8443", // Replace with your base URL
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL, // Replace with your base URL
   // You can set headers or other configurations here if needed
 });
 
@@ -27,7 +27,8 @@ export const fetchVersion = async () => {
 export const fetchWithAuth = async () => {
   try {
     // Replace 'token' with your actual token
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ1c2VyIiwiaXNzIjoic2VydmVyIiwic3ViIjoiYXNod2luMDJAbWFpbC5jb20iLCJleHAiOjE3MDQxMDExMzB9.GQf8JvU624yv9WJv4Wqd5Wpb-JltTxwgju9YSXxISMg";
     const response = await axiosInstance.get("/test/auth", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -58,6 +59,25 @@ export const signup = async (email: string, password: string) => {
       email,
       password,
     });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const refreshToken = async () => {
+  try {
+    const refreshtoken = sessionStorage.getItem("refreshToken");
+    const response = await axiosInstance.post(
+      "/auth/token",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${refreshtoken}`,
+        },
+      }
+    );
+    sessionStorage.setItem("accessToken", response.data.accessToken);
     return response.data;
   } catch (error) {
     console.log(error);

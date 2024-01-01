@@ -2,6 +2,7 @@ import Footer from "@/Components/Footer";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import TokenRefresher from "@/Components/TokenRefresher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +16,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
         {children}
         <div>
           <Footer />
+          {/* <TokenRefresher /> */}
         </div>
       </body>
     </html>
