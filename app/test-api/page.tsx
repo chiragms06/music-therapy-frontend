@@ -1,6 +1,7 @@
 'use client';
 
-import { fetchEcho, fetchVersion, fetchWithAuth, signup, login  } from "@/services/api"; // Import your api.ts file
+import { fetchEcho, fetchVersion, fetchWithAuth, signup, login, fetchQuestions } from "@/services/api"; // Import your api.ts file
+import { QuestionType } from "@/app/interfaces/interfaces";
 
 export default function TestPage() {
   function testEcho() {
@@ -73,6 +74,19 @@ export default function TestPage() {
 
     fetchData();
   }
+  
+  function testQuestions() {
+    const fetchData = async () => {
+      try {
+        const response : QuestionType[] = await fetchQuestions();
+        console.log("Questions response:", response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }
 
   return (
     <div>
@@ -106,6 +120,12 @@ export default function TestPage() {
         onClick={testLogin}
       >
         Login
+      </button>
+      <button
+        className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40 m-2"
+        onClick={testQuestions}
+      >
+        Questions
       </button>
     </div>
   );

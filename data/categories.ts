@@ -1,4 +1,4 @@
-import {ModuleCategory } from "@/app/interfaces/module-interface";
+import {ModuleCategory } from "@/app/interfaces/interfaces";
 
 const categoriesArray: Array<ModuleCategory> = [
     {

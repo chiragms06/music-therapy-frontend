@@ -1,4 +1,5 @@
 import axios from "axios";
+import { QuestionType } from "@/app/interfaces/interfaces";
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL, // Replace with your base URL
@@ -27,8 +28,7 @@ export const fetchVersion = async () => {
 export const fetchWithAuth = async () => {
   try {
     // Replace 'token' with your actual token
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ1c2VyIiwiaXNzIjoic2VydmVyIiwic3ViIjoiYXNod2luMDJAbWFpbC5jb20iLCJleHAiOjE3MDQxMDExMzB9.GQf8JvU624yv9WJv4Wqd5Wpb-JltTxwgju9YSXxISMg";
+    const token = sessionStorage.getItem("accessToken");
     const response = await axiosInstance.get("/test/auth", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -82,4 +82,19 @@ export const refreshToken = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const fetchQuestions = async () : Promise<Array<QuestionType>> =>{
+  try{
+    const token = sessionStorage.getItem("accessToken");
+    const response = await axiosInstance.get("/questions", {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    });
+    return response.data;
+  }catch(error){
+    console.log(error);
+  }
+  return [];
 };

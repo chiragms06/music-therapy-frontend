@@ -1,5 +1,5 @@
 import Module from "./Module";
-import { ModuleCategory } from "@/app/interfaces/module-interface";
+import { ModuleCategory } from "@/app/interfaces/interfaces";
 
 export default function ModuleList(props: any) {
   return props.modules.map((module: ModuleCategory) => {

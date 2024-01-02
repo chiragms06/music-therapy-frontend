@@ -9,7 +9,7 @@ export default function Question(props: any) {
           <span className="text-md max-w-full">{props.description}</span>
         </div>
         <div className="ml-16">
-          {props.type === "radio" || props.type === "checkbox" ? (
+          {props.type === "Choice" ? (
             props.options.map((option: any) => {
               return (
                 <div className="flex">
@@ -20,7 +20,7 @@ export default function Question(props: any) {
                 </div>
               );
             })
-          ) : (props.type === "textarea" ? (
+          ) : (props.type === "Text" ? (
             <div>
               <label className="mr-4">Answer: </label>
               <textarea

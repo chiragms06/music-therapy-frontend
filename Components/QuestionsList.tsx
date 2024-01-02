@@ -1,16 +1,16 @@
 import Question from "@/Components/Question";
-import { QuestionInterface } from "@/app/interfaces/module-interface";
+import { QuestionType } from "@/app/interfaces/interfaces";
 
 export default function QuestionsList(props: any) {
-  return props.questions.map((question: QuestionInterface, index : number) => {
+  return props.questions.map((question: QuestionType, index : number) => {
     return (
       <div className="flex justify-center my-2 min-w-max">
         <Question
           key={question.id}
           id={index + 1}
-          description={question.question}
-          category={question.category}
-          type={question.type}
+          description={question.description}
+          category={question.type}
+          type={question.responseType}
           options={question.options}
         />
       </div>

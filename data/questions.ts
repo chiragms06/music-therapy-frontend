@@ -1,4 +1,4 @@
-import { QuestionInterface } from "@/app/interfaces/module-interface";
+import { QuestionInterface } from "@/app/interfaces/interfaces";
 
 const questionsArray: Array<QuestionInterface> = [
   {

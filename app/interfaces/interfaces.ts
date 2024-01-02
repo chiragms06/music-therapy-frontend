@@ -13,3 +13,16 @@ export type QuestionInterface = {
   type: string;
   options: Array<string>;
 };
+
+export type QuestionType = {
+  id: number;
+  type: string;
+  description: string;
+  responseType: string;
+  options?: Array<OptionType>;
+}
+
+export type OptionType = {
+  optionId: number;
+  description: string;
+}
