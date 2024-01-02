@@ -14,7 +14,7 @@ export default function Question(props: any) {
           {props.type === "Choice" ? (
             props.options.map((option: OptionType) => {
               return (
-                <div className="flex">
+                <div className="flex" key={props.options.optionId}>
                   <input
                     type="radio"
                     name={props.id}
