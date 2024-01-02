@@ -95,6 +95,6 @@ export const fetchQuestions = async () : Promise<Array<QuestionType>> =>{
     return response.data;
   }catch(error){
     console.log(error);
+    return [];
   }
-  return [];
 };

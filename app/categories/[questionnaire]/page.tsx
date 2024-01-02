@@ -29,16 +29,19 @@ export default function Questionnaire({
   useEffect(() => {
     async function getQuestions() {
       try {
-        setQuestionsArray(await fetchQuestions());
-        setQuestionsArray(questionsArray.filter((question) => {
-          return question.type === currCategory;
-        }));
+        const fetchedQuestions = await fetchQuestions();
+        const filteredQuestions = fetchedQuestions.filter(
+          (question: QuestionType) => {
+            return question.type === currCategory;
+          }
+        );
+        setQuestionsArray(filteredQuestions);
       } catch (error) {
         console.log(error);
       }
     }
     getQuestions();
-  }, []);
+  }, [currCategory]);
 
   console.log(currCategory);
   console.log(currCategoryDescription);

@@ -1,3 +1,5 @@
+import { OptionType } from "@/app/interfaces/interfaces";
+
 export default function Question(props: any) {
   return (
     <>
@@ -10,17 +12,22 @@ export default function Question(props: any) {
         </div>
         <div className="ml-16">
           {props.type === "Choice" ? (
-            props.options.map((option: any) => {
+            props.options.map((option: OptionType) => {
               return (
                 <div className="flex">
-                  <input type={props.type} name={props.id} value={option} />
-                  <label htmlFor={option} className="ml-4 mb-1">
-                    {option}
+                  <input
+                    type="radio"
+                    name={props.id}
+                    value={option.description}
+                    className="mr-2"
+                  />
+                  <label htmlFor={option.description} className="ml-4 mb-1">
+                    {option.description}
                   </label>
                 </div>
               );
             })
-          ) : (props.type === "Text" ? (
+          ) : props.type === "Text" ? (
             <div>
               <label className="mr-4">Answer: </label>
               <textarea
@@ -38,7 +45,7 @@ export default function Question(props: any) {
                 className="bg-slate-200 hover:bg-white px-2 py-1 rounded-md text-slate-700"
               />
             </div>
-          ))}
+          )}
         </div>
       </div>
     </>
