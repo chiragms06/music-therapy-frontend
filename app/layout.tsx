@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TokenRefresher from "@/Components/TokenRefresher";
+import Navbar from "@/Components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <div>{/* <TokenRefresher /> */}</div>
-        <footer className="absolute bottom-0 w-full mt-4">
-          <Footer />
-        </footer>
+        <div className="min-h-screen flex flex-col">
+          <div className="flex-grow">{children}</div>
+          <footer>
+            <Footer />
+          </footer>
+          <div>{/* <TokenRefresher /> */}</div>
+        </div>
       </body>
     </html>
   );

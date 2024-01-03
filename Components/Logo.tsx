@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <>
       <Link href="/" passHref>
-        <Image src="/images/logo.png" alt="logo" width="300" height="300" />
+        <Image src="/images/logo.svg" alt="logo" width="300" height="300" />
       </Link>
     </>
   );

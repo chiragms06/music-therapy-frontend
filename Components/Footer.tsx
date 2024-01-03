@@ -3,7 +3,7 @@ export default function Footer() {
   const year = date.getFullYear();
 
   return (
-    <div className="flex justify-center pt-4 text-white">
+    <div className="flex items-center justify-center p-2 text-slate-600">
       <h3>
         ©️ music.therapy - {year}
       </h3>

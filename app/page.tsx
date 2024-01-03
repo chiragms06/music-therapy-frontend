@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Navbar from "@/Components/Navbar";
 import Link from "next/link";
-import Login from "@/Components/Login";
 
 export default function Home() {
   return (
-    <main className="bg-cover bg-[url('/images/bg-landing-page.jpg')] min-h-screen">
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/bg-landing-page.jpg')" }}
+    >
       <Navbar />
       <div className="flex pt-20 px-20 justify-center">
         {/* content */}
@@ -18,11 +20,15 @@ export default function Home() {
             self-improvement!
           </h3>
           <div className="flex space-x-8">
-            <button className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40">
-              Sign-up
-            </button>
-            <Link href="/categories" passHref>
-              <Login />
+            <Link href="/signup" passHref>
+              <button className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40">
+                Sign-up
+              </button>
+            </Link>
+            <Link href="/login" passHref>
+              <button className="bg-white hover:bg-slate-100 text-[#100B00] rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40">
+                Login
+              </button>
             </Link>
           </div>
         </div>
@@ -36,6 +42,6 @@ export default function Home() {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }
