@@ -20,7 +20,7 @@ export default function Home() {
             self-improvement!
           </h3>
           <div className="flex space-x-8">
-            <Link href="/signup" passHref>
+            <Link href="/sign-up" passHref>
               <button className="bg-[#462749] text-white rounded-full px-10 py-2 font-sans shadow-md shadow-[#24272B]/40">
                 Sign-up
               </button>

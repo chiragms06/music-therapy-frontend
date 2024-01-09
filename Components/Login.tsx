@@ -1,4 +1,3 @@
-import React from "react";
 import { login } from "@/services/api";
 
 export default function Login() {

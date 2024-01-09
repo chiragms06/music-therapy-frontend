@@ -1,5 +1,6 @@
 import axios from "axios";
 import { QuestionType } from "@/app/interfaces/interfaces";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL, // Replace with your base URL
@@ -10,11 +11,25 @@ const axiosInstance = axios.create({
 export const fetchEcho = async (name: string) => {
   try {
     const response = await axiosInstance.get(`test/echo/${name}`);
+
     return response.data;
   } catch (error) {
     console.log(error);
   }
 };
+
+// export const fetchEcho = async (req: NextApiRequest,
+//   res: NextApiResponse) => {
+//     const { name } = req.body as { name: string };
+//   try {
+//     const response = await axiosInstance.get(`test/echo/${name}`);
+//     res.redirect(200, '/login');
+//     return response.data;
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send({ error: 'Failed to fetch data' })
+//   }
+// };
 
 export const fetchVersion = async () => {
   try {
@@ -84,16 +99,38 @@ export const refreshToken = async () => {
   }
 };
 
-export const fetchQuestions = async () : Promise<Array<QuestionType>> =>{
-  try{
+export const fetchQuestions = async (): Promise<Array<QuestionType>> => {
+  try {
     const token = sessionStorage.getItem("accessToken");
     const response = await axiosInstance.get("/questions", {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        }
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     return response.data;
-  }catch(error){
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const registerTherapist = async (
+  fname: string,
+  lname: string,
+  email: string,
+  contact: string
+) => {
+  try {
+    // api call to register therapist
+    const therapistObject = {
+      fname,
+      lname,
+      email,
+      contact,
+    };
+
+    return therapistObject;
+  } catch (error) {
     console.log(error);
     return [];
   }
